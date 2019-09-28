@@ -1,4 +1,4 @@
-import 'package:dads_phone_app/widgets/player-widget.dart';
+import 'package:dads_phone_app/widgets/new-player-widget.dart';
 import 'package:flutter/material.dart';
 
 class AddPlayers extends StatelessWidget {
@@ -35,7 +35,7 @@ class AddPlayers extends StatelessWidget {
               ),
               Container(
                   padding: EdgeInsets.all(20),
-                  child: PlayerWidget(players: players)
+                  child: NewPlayerWidget(players: players)
               ),
               MaterialButton(
                 minWidth: 40,

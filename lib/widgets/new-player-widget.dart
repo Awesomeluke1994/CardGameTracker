@@ -2,16 +2,16 @@ import 'package:dads_phone_app/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class PlayerWidget extends StatefulWidget {
-  PlayerWidget({Key key, this.players}) : super(key: key);
+class NewPlayerWidget extends StatefulWidget {
+  NewPlayerWidget({this.players});
 
   final List<Player> players;
 
   @override
-  PlayerWidgetState createState() => PlayerWidgetState();
+  NewPlayerWidgetState createState() => NewPlayerWidgetState();
 }
 
-class PlayerWidgetState extends State<PlayerWidget> {
+class NewPlayerWidgetState extends State<NewPlayerWidget> {
   void setPlayersName(int index, String text) {
     widget.players[index].firstName = text;
   }
