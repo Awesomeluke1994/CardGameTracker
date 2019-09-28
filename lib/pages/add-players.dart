@@ -1,24 +1,22 @@
+import 'package:dads_phone_app/widgets/player-widget.dart';
 import 'package:flutter/material.dart';
 
 class AddPlayers extends StatelessWidget {
   Function setNameHandler;
   Function addPlayersHandler;
   Function startGameHandler;
-  Function deletePlayerHandler;
   var players;
 
   AddPlayers({
     setNameHandler,
     players,
-    addPlayersHandler,
     startGameHandler,
-    deletePlayerHandler,
+    addPlayersHander,
   }) {
     this.setNameHandler = setNameHandler;
     this.players = players;
-    this.addPlayersHandler = addPlayersHandler;
     this.startGameHandler = startGameHandler;
-    this.deletePlayerHandler = deletePlayerHandler;
+    this.addPlayersHandler = addPlayersHander;
   }
 
   @override
@@ -36,48 +34,8 @@ class AddPlayers extends StatelessWidget {
                 child: Text("Max 7 players"),
               ),
               Container(
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: List.generate(
-                    players.length,
-                    (index) => Padding(
-                      padding: EdgeInsets.only(bottom: 10),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            child: Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: "player " + (index + 1).toString(),
-                                ),
-                                onChanged: (text) {
-                                  setNameHandler(index, text);
-                                },
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: MaterialButton(
-                              height: 40,
-                              minWidth: 30,
-                              color: Colors.white,
-                              child: Icon(
-                                Icons.delete,
-                                color: Colors.red,
-                              ),
-                              onPressed: () {
-                                deletePlayerHandler(index);
-                              },
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                  padding: EdgeInsets.all(20),
+                  child: PlayerWidget(players: players)
               ),
               MaterialButton(
                 minWidth: 40,
@@ -105,42 +63,3 @@ class AddPlayers extends StatelessWidget {
     );
   }
 }
-
-//children: List.generate(
-//players.length,
-//(index) => Padding(
-//padding: EdgeInsets.only(bottom: 10),
-//child: Row(
-//children: <Widget>[
-//Container(
-//child: Expanded(
-//child: TextField(
-//decoration: InputDecoration(
-//border: OutlineInputBorder(),
-//labelText: "player " + (index + 1).toString(),
-//),
-//onChanged: (text) {
-//setNameHandler(index, text);
-//},
-//),
-//),
-//),
-//Padding(
-//padding: EdgeInsets.only(left: 10),
-//child: MaterialButton(
-//height: 40,
-//minWidth: 30,
-//color: Colors.white,
-//child: Icon(
-//Icons.delete,
-//color: Colors.red,
-//),
-//onPressed: () {
-//deletePlayerHandler(index);
-//},
-//),
-//)
-//],
-//),
-//),
-//),

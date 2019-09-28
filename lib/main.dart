@@ -32,7 +32,6 @@ class MyGamePageState extends State<MyGamePage> {
     new Player(),
   ];
 
-
   void newGame() {
     setState(() {
       gameStarted = true;
@@ -54,18 +53,7 @@ class MyGamePageState extends State<MyGamePage> {
   }
 
   void startGame() {
-    print(players[0].firstName);
-  }
-
-  void deletePlayer(index) {
-    if(players.length != 1) {
-      setState(() {
-        print(index);
-        print(players[index].firstName);
-        var test = players.removeAt(index);
-        print(test.firstName);
-      });
-    }
+    print(players.length);
   }
 
   @override
@@ -76,9 +64,8 @@ class MyGamePageState extends State<MyGamePage> {
         return AddPlayers(
           setNameHandler: setName,
           players: players,
-          addPlayersHandler: addNewPlayer,
           startGameHandler: startGame,
-          deletePlayerHandler: deletePlayer,
+          addPlayersHander: addNewPlayer,
         );
       }
     }
