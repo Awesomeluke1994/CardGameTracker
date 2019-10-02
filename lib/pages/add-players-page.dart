@@ -1,22 +1,23 @@
+import 'package:dads_phone_app/classes/player.dart';
 import 'package:dads_phone_app/widgets/new-player-widget.dart';
 import 'package:flutter/material.dart';
 
-class AddPlayers extends StatelessWidget {
-  Function setNameHandler;
-  Function addPlayersHandler;
-  Function startGameHandler;
-  var players;
+class AddPlayers extends StatefulWidget {
 
-  AddPlayers({
-    setNameHandler,
-    players,
-    startGameHandler,
-    addPlayersHander,
-  }) {
-    this.setNameHandler = setNameHandler;
-    this.players = players;
-    this.startGameHandler = startGameHandler;
-    this.addPlayersHandler = addPlayersHander;
+  final List<Player> players;
+
+  AddPlayers({this.players});
+
+  @override
+  AddPlayersState createState() => AddPlayersState();
+}
+
+class AddPlayersState extends State<AddPlayers> {
+
+  void addPlayer() {
+    setState(() {
+      widget.players.add(new Player());
+    });
   }
 
   @override
@@ -35,7 +36,7 @@ class AddPlayers extends StatelessWidget {
               ),
               Container(
                   padding: EdgeInsets.all(20),
-                  child: NewPlayerWidget(players: players)
+                  child: NewPlayerWidget(players: widget.players)
               ),
               MaterialButton(
                 minWidth: 40,
@@ -43,7 +44,7 @@ class AddPlayers extends StatelessWidget {
                   Icons.add,
                   color: Colors.white,
                 ),
-                onPressed: addPlayersHandler,
+                onPressed: addPlayer,
                 color: Colors.blue,
               ),
               RaisedButton(
@@ -53,7 +54,7 @@ class AddPlayers extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                onPressed: startGameHandler,
+                onPressed: null,
                 color: Colors.blue,
               )
             ],

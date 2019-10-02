@@ -1,12 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class StartPage extends StatelessWidget {
+class StartPage extends StatefulWidget {
+
   Function startGameHandler;
 
-  StartPage(startGameHandler) {
-    this.startGameHandler = startGameHandler;
-  }
+  StartPage({this.startGameHandler});
+
+  @override
+  StartPageState createState() => StartPageState();
+}
+
+class StartPageState extends State<StartPage> {
+  double height = 200;
+  double width = 200;
+  double borderRadius = 200;
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +29,32 @@ class StartPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(180)),
+            Material(
+              elevation: 5.0,
               color: Colors.blue,
-              child: Text(
-                'New Game',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
+              borderRadius: BorderRadius.circular(borderRadius),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(borderRadius),
+                child: Container(
+                  child: Center(
+                    child: Text(
+                      "Start Game",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  width: width,
+                  height: height,
                 ),
+                onTap: () =>
+                {
+                  widget.startGameHandler()
+                },
               ),
-              onPressed: startGameHandler,
-            ),
+            )
           ],
         ),
       ),

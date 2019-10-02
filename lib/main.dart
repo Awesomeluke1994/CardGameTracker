@@ -1,6 +1,8 @@
-import 'package:dads_phone_app/pages/add-players.dart';
+import 'package:dads_phone_app/pages/add-players-page.dart';
 import 'package:dads_phone_app/pages/start-page.dart';
 import 'package:flutter/material.dart';
+
+import 'classes/player.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,13 +21,11 @@ class MyApp extends StatelessWidget {
 }
 
 class MyGamePage extends StatefulWidget {
-
   @override
   MyGamePageState createState() => MyGamePageState();
 }
 
 class MyGamePageState extends State<MyGamePage> {
-
   final int maxPlayers = 7;
   bool gameStarted = false;
   var players = [
@@ -38,39 +38,20 @@ class MyGamePageState extends State<MyGamePage> {
     });
   }
 
-  void setName(index, text) {
-    setState(() {
-      players[index].firstName = text;
-    });
-  }
-
-  void addNewPlayer() {
-    if(players.length < maxPlayers) {
-      setState(() {
-        players.add(new Player());
-      });
-    }
-  }
-
   void startGame() {
     print(players.length);
   }
 
   @override
   Widget build(BuildContext context) {
-      if(this.gameStarted == false) {
-        return StartPage(newGame);
-      } else {
-        return AddPlayers(
-          setNameHandler: setName,
-          players: players,
-          startGameHandler: startGame,
-          addPlayersHander: addNewPlayer,
-        );
-      }
+    if (this.gameStarted == false) {
+      return StartPage(
+        startGameHandler: newGame,
+      );
+    } else {
+      return AddPlayers(
+        players: players,
+      );
     }
   }
-
-  class Player {
-    String firstName;
-  }
+}
