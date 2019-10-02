@@ -3,6 +3,7 @@ import 'package:dads_phone_app/pages/start-page.dart';
 import 'package:flutter/material.dart';
 
 import 'classes/player.dart';
+import 'pages/add-trump-page.dart';
 
 void main() => runApp(MyApp());
 
@@ -49,9 +50,10 @@ class MyGamePageState extends State<MyGamePage> {
         startGameHandler: newGame,
       );
     } else {
-      return AddPlayers(
-        players: players,
-      );
+//      return AddPlayers(
+//        players: players,
+//      );
+      return AddTrumpPage();
     }
   }
 }

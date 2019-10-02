@@ -49,10 +49,7 @@ class StartPageState extends State<StartPage> {
                   width: width,
                   height: height,
                 ),
-                onTap: () =>
-                {
-                  widget.startGameHandler()
-                },
+                  onTap: () => widget.startGameHandler()
               ),
             )
           ],
