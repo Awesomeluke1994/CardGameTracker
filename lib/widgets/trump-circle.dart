@@ -3,19 +3,21 @@ import 'package:flutter/material.dart';
 class TrumpCircle extends StatelessWidget {
   int number;
   Suit suit;
+  double borderRadius = 180;
 
-  TrumpCircle({this.number, this.suit});
+  TrumpCircle({@required this.number, @required this.suit});
 
   @override
   Widget build(BuildContext context) {
     return Material(
       elevation: 5.0,
-      borderRadius: BorderRadius.circular(180),
+      borderRadius: BorderRadius.circular(borderRadius),
       child: Container(
         width: 100,
         height: 100,
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(180)),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(borderRadius)),
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
