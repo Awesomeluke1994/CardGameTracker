@@ -1,12 +1,14 @@
+import 'package:dads_phone_app/classes/gameState.dart';
 import 'package:dads_phone_app/classes/player.dart';
 import 'package:dads_phone_app/widgets/new-player-widget.dart';
 import 'package:flutter/material.dart';
 
 class AddPlayers extends StatefulWidget {
 
-  final List<Player> players;
+  final GameState gameState;
+  final Function pageHandler;
 
-  AddPlayers({this.players});
+  AddPlayers({this.gameState, this.pageHandler});
 
   @override
   AddPlayersState createState() => AddPlayersState();
@@ -16,7 +18,13 @@ class AddPlayersState extends State<AddPlayers> {
 
   void addPlayer() {
     setState(() {
-      widget.players.add(new Player());
+      widget.gameState.addPlayer();
+    });
+  }
+
+  void goToTrumpPage() {
+    setState(() {
+      widget.gameState.setGameState(gameStates.addTrumpsGuessed);
     });
   }
 
@@ -36,7 +44,7 @@ class AddPlayersState extends State<AddPlayers> {
               ),
               Container(
                   padding: EdgeInsets.all(20),
-                  child: NewPlayerWidget(players: widget.players)
+                  child: NewPlayerWidget(players: widget.gameState.players)
               ),
               MaterialButton(
                 minWidth: 40,
@@ -47,19 +55,16 @@ class AddPlayersState extends State<AddPlayers> {
                 onPressed: addPlayer,
                 color: Colors.blue,
               ),
-              RaisedButton(
-                child: Text(
-                  "Start game",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: null,
-                color: Colors.blue,
-              )
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text('Start Game'),
+        icon: Icon(Icons.play_arrow),
+        onPressed: () {
+          Navigator.pushNamed(context, '/add-trumps');
+        },
       ),
     );
   }

@@ -1,9 +1,10 @@
+import 'package:dads_phone_app/classes/gameState.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StartPage extends StatefulWidget {
 
-  Function startGameHandler;
+  final Function startGameHandler;
 
   StartPage({this.startGameHandler});
 
@@ -34,22 +35,24 @@ class StartPageState extends State<StartPage> {
               color: Colors.blue,
               borderRadius: BorderRadius.circular(borderRadius),
               child: InkWell(
-                borderRadius: BorderRadius.circular(borderRadius),
-                child: Container(
-                  child: Center(
-                    child: Text(
-                      "Start Game",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30
+                  borderRadius: BorderRadius.circular(borderRadius),
+                  child: Container(
+                    child: Center(
+                      child: Text(
+                        "Start Game",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
+                    width: width,
+                    height: height,
                   ),
-                  width: width,
-                  height: height,
-                ),
-                  onTap: () => widget.startGameHandler()
+                  onTap: () {
+                    Navigator.pushNamed(context, '/add-players');
+                  }
               ),
             )
           ],

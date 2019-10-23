@@ -14,7 +14,7 @@ class NewPlayerWidget extends StatefulWidget {
 
 class NewPlayerWidgetState extends State<NewPlayerWidget> {
   void setPlayersName(int index, String text) {
-    widget.players[index].firstName = text;
+    widget.players[index].setFirstName(text);
   }
 
   void deletePlayer(int index) {
@@ -30,7 +30,7 @@ class NewPlayerWidgetState extends State<NewPlayerWidget> {
     List<TextEditingController> textEditingControllers = [];
     widget.players.forEach((player) {
       TextEditingController textEditingController =
-          new TextEditingController(text: player.firstName);
+      new TextEditingController(text: player.name);
       textEditingControllers.add(textEditingController);
     });
 
